@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const NavbarMenu = ({ getData }) => {
+const NavbarMenu = ({ getData, categoryActive, setCategoryActive }) => {
   const categories = ['desayuno', 'menu', 'adicional', 'bebidas'];
-  const [categoryActive, setCategoryActive] = useState('desayuno');
   const handleClick = (event, category) => {
     event.preventDefault();
     getData(category);
