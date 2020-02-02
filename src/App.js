@@ -3,18 +3,14 @@ import './App.css';
 
 // components
 import Header from './components/Header';
-import ProductsContainer from './components/ProductsContainer';
-import OrderContainer from './components/OrderContainer';
+import TakeOrder from './pages/TakeOrder';
 
 
 function App() {
   return (
     <div>
       <Header></Header>
-      <div className="d-flex">
-        <ProductsContainer></ProductsContainer>
-        <OrderContainer></OrderContainer>
-      </div>
+      <TakeOrder></TakeOrder>
     </div>
   );
 }
