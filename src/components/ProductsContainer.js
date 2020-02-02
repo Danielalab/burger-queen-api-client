@@ -18,7 +18,7 @@ const requestDataProducts = (token) => {
 const filterProductsByCategory = (products, category) =>
   products.filter(product =>  product.type === category)
 
-const Products = () => {
+const ProductsContainer = () => {
   const token = 'sjhkjfgsafkjs24kdhks'
   const [dataProducts, setdataProducts] = useState(null);
   const [categoryActive, setCategoryActive] = useState('desayuno');
@@ -45,4 +45,4 @@ const Products = () => {
   )
 }
 
-export default Products;
+export default ProductsContainer;
