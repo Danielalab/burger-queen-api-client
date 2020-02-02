@@ -18,7 +18,7 @@ const requestDataProducts = (token) => {
 const filterProductsByCategory = (products, category) =>
   products.filter(product =>  product.type === category)
 
-const ProductsContainer = () => {
+const ProductsContainer = ({ addingAProductToTheOrder }) => {
   const token = 'sjhkjfgsafkjs24kdhks'
   const [dataProducts, setdataProducts] = useState(null);
   const [categoryActive, setCategoryActive] = useState('desayuno');
@@ -29,10 +29,6 @@ const ProductsContainer = () => {
         setdataProducts(productsData);
       })
   }, []);
-
-  const handlerClickItemProduct = (product) => {
-    console.log(product);
-  }
   
   return (
     <div className="w-50">
@@ -44,7 +40,7 @@ const ProductsContainer = () => {
           filterProductsByCategory(dataProducts, categoryActive)
             .map(product => 
               <ItemProduct productData = { product }
-                handlerClickItemProduct = { handlerClickItemProduct }
+                handlerClickItemProduct = { addingAProductToTheOrder }
                 key={ product._id }/>)
           : 'loading'}
       </ul>

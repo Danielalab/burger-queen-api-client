@@ -1,14 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 // components
 import ProductsContainer from '../components/ProductsContainer';
 import OrderContainer from '../components/OrderContainer';
 
+const findProductById = (orderProducts, newProduct) => (
+  orderProducts.find((product) => product._id === newProduct._id)
+);
 
-function TakeOrder() {
+const addProduct = (orderProducts, newProduct) => {
+  if (!orderProducts) {
+    return [{ ...newProduct, qty: 1 }];
+  }
+  if (findProductById(orderProducts, newProduct)) {
+    return orderProducts.map(product => 
+      (product._id === newProduct._id) 
+        ? ({ ...product, qty: product.qty + 1 })
+        : product);
+  }
+  return [
+    ...(orderProducts.map(product => ({ ...product }))),
+    { ...newProduct, qty: 1 } ];
+};
+
+const TakeOrder = () => {
+  const [orderProducts, setOrderProducts] = useState(null);
+
+  const updatingOrder = (arrOrder, gettingUpdatedOrder) => (product) => {
+    return setOrderProducts(gettingUpdatedOrder(arrOrder, product));
+  }
+
   return (
     <div className="d-flex">
-      <ProductsContainer></ProductsContainer>
+      <ProductsContainer addingAProductToTheOrder = { updatingOrder(orderProducts, addProduct) }>
+      </ProductsContainer>
       <OrderContainer></OrderContainer>
     </div>
   );
