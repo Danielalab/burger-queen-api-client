@@ -29,6 +29,10 @@ const ProductsContainer = () => {
         setdataProducts(productsData);
       })
   }, []);
+
+  const handlerClickItemProduct = (product) => {
+    console.log(product);
+  }
   
   return (
     <div className="w-50">
@@ -40,6 +44,7 @@ const ProductsContainer = () => {
           filterProductsByCategory(dataProducts, categoryActive)
             .map(product => 
               <ItemProduct productData = { product }
+                handlerClickItemProduct = { handlerClickItemProduct }
                 key={ product._id }/>)
           : 'loading'}
       </ul>
