@@ -38,7 +38,9 @@ const ProductsContainer = () => {
       <ul>
         { dataProducts ?
           filterProductsByCategory(dataProducts, categoryActive)
-            .map(product => <ItemProduct key={ product._id }/>)
+            .map(product => 
+              <ItemProduct productData = { product }
+                key={ product._id }/>)
           : 'loading'}
       </ul>
     </div>
