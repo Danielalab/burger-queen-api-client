@@ -140,3 +140,29 @@ nav {
 .item-tab a {
   color: var(--primary-color);
 }
+
+/* Item Product */
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.flex-grow-2 {
+  flex-grow: 2;
+}
+
+.item-product {
+  height: 9vh;
+  font-size: 18px;
+  border-bottom: 1px solid #364f6b66;
+  transform: rotate(-0.1deg);
+}
+
+.item-product .container-product-img {
+  width: 18%;
+}
+
+.item-product .product-img {
+  max-width: 40%;
+  height: auto;
+}

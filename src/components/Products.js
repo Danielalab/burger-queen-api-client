@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import NavbarMenu from './Navbar-menu';
 import Axios from 'axios';
+import ItemProduct from './ItemProduct';
 
 const requestDataProducts = (token) => {
   return Axios.get('http://localhost:3001/products', {
@@ -39,6 +40,9 @@ const Products = () => {
       <NavbarMenu getData ={ getDataByCategory }
          categoryActive = { categoryActive }
          setCategoryActive = { setCategoryActive }></NavbarMenu>
+      <ul>
+        <ItemProduct/>
+      </ul>
     </div>
   )
 }
