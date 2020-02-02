@@ -22,26 +22,24 @@ const Products = () => {
   const token = 'sjhkjfgsafkjs24kdhks'
   const [dataProducts, setdataProducts] = useState(null);
   const [categoryActive, setCategoryActive] = useState('desayuno');
-  const [filteredProductsByCategory, setFilteredProductsByCategory] = useState(null);
-
+ 
   useEffect(() => {
     requestDataProducts(token)
       .then(productsData => {
         setdataProducts(productsData);
       })
   }, []);
-
-  const getDataByCategory = (category) => {
-    setFilteredProductsByCategory(filterProductsByCategory(dataProducts, category));
-  }
   
   return (
     <div className="w-50">
-      <NavbarMenu getData ={ getDataByCategory }
+     { <NavbarMenu
          categoryActive = { categoryActive }
-         setCategoryActive = { setCategoryActive }></NavbarMenu>
+         setCategoryActive = { setCategoryActive }></NavbarMenu>}
       <ul>
-        <ItemProduct/>
+        { dataProducts ?
+          filterProductsByCategory(dataProducts, categoryActive)
+            .map(product => <ItemProduct key={ product._id }/>)
+          : 'loading'}
       </ul>
     </div>
   )

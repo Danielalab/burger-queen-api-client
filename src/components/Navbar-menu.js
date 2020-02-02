@@ -1,10 +1,9 @@
 import React from 'react';
 
-const NavbarMenu = ({ getData, categoryActive, setCategoryActive }) => {
+const NavbarMenu = ({ categoryActive, setCategoryActive }) => {
   const categories = ['desayuno', 'menu', 'adicional', 'bebidas'];
   const handleClick = (event, category) => {
     event.preventDefault();
-    getData(category);
     setCategoryActive(category);
   }
 
