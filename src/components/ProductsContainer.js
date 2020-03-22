@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from "prop-types";
 import Axios from 'axios';
 import NavbarMenu from './Navbar-menu';
 import ItemProduct from './ItemProduct';
@@ -49,6 +50,10 @@ const ProductsContainer = ({ addingAProductToTheOrder }) => {
       </ul>
     </div>
   );
+};
+
+ProductsContainer.propTypes = {
+  addingAProductToTheOrder: PropTypes.func.isRequired,
 };
 
 export default ProductsContainer;
