@@ -12,8 +12,10 @@ const ItemProduct = ({ productData, handlerClickItemProduct }) => {
 
   return (
     <li
+      role="menuitem"
       className="item-product container align-items-center"
       onClick={clickProduct}
+      onKeyDown={clickProduct}
     >
       <figure className="container-product-img h-100 m-0 flex-grow-2 d-flex align-items-center justify-content-center">
         <img

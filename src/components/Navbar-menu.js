@@ -11,13 +11,15 @@ const NavbarMenu = ({ categoryActive, setCategoryActive }) => {
   return (
     <nav>
       <ul className="p-0 text-upper-case h-100 container">
-        { categories.map((category, index) => (
+        { categories.map((category) => (
           <li
-            key={index}
+            role="menuitem"
+            key={category}
             className={categoryActive === category
               ? 'd-flex align-items-center justify-content-center item-tab text-bold active'
               : 'd-flex align-items-center justify-content-center item-tab text-bold'}
             onClick={(event) => handleClick(event, category)}
+            onKeyDown={(event) => handleClick(event, category)}
           >
             <a href={category}>{ category }</a>
           </li>
