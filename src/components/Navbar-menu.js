@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const NavbarMenu = ({ categoryActive, setCategoryActive }) => {
   const categories = ['desayuno', 'menu', 'adicional', 'bebidas'];
@@ -24,6 +25,11 @@ const NavbarMenu = ({ categoryActive, setCategoryActive }) => {
       </ul>
     </nav>
   );
+};
+
+NavbarMenu.propTypes = {
+  categoryActive: PropTypes.string.isRequired,
+  setCategoryActive: PropTypes.func.isRequired,
 };
 
 export default NavbarMenu;
