@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import burgerSimpleImg from '../images/burger-simple.png';
 
 const ItemProduct = ({ productData, handlerClickItemProduct }) => {
@@ -28,6 +30,14 @@ const ItemProduct = ({ productData, handlerClickItemProduct }) => {
       </p>
     </li>
   );
+};
+
+ItemProduct.propTypes = {
+  productData: PropTypes.shape({
+    name: PropTypes.string,
+    price: PropTypes.number,
+  }).isRequired,
+  handlerClickItemProduct: PropTypes.func.isRequired,
 };
 
 export default ItemProduct;
