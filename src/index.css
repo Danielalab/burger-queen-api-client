@@ -230,7 +230,7 @@ nav {
 .order-table input {
   border: none;
   border-radius: 0;
-  border-bottom: 2px solid var(--primary-color);
+  border-bottom: 3px solid #fc5185e6;
   font-size: 20px;
   text-align: center;
   transition: 200ms all ease;
@@ -240,7 +240,6 @@ nav {
 .order-table input:focus {
   font-size: 20px;
   outline: none;
-  border-bottom: 3px solid #fc5185e6;
 }
 
 .order-table-head {

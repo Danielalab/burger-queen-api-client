@@ -9,8 +9,8 @@ import TakeOrder from './pages/TakeOrder';
 function App() {
   return (
     <div>
-      <Header></Header>
-      <TakeOrder></TakeOrder>
+      <Header />
+      <TakeOrder />
     </div>
   );
 }
