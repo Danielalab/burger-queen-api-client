@@ -1,4 +1,5 @@
 import React from 'react';
+import ItemOrder from './ItemOrder';
 
 const OrderContainer = () => (
   <div className="order-container w-50 px-2 py-1">
@@ -18,7 +19,10 @@ const OrderContainer = () => (
         <li className="flex-grow-1 text-center p-1">Precio</li>
       </ul>
       <div className="order-products-list container justify-content-center">
-        <p>Aún no haz agregado productos en la orden</p>
+        {/* <p>Aún no haz agregado productos en la orden</p> */}
+        <ul className="w-100">
+          <ItemOrder />
+        </ul>
       </div>
       <footer>
         <p className="container total-text text-bold m-0">
@@ -27,7 +31,7 @@ const OrderContainer = () => (
         </p>
         <div className="d-flex justify-content-center">
           <button type="submit" className="button-success btn-large text-upper-case text-bold">
-              enviar orden
+            enviar orden
           </button>
         </div>
       </footer>
