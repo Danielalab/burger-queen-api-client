@@ -32,7 +32,7 @@ const TakeOrder = () => {
   return (
     <div className="d-flex main-container">
       <ProductsContainer addingAProductToTheOrder={updatingOrder(orderProducts, addProduct)} />
-      <OrderContainer />
+      <OrderContainer arrProducts={orderProducts} />
     </div>
   );
 };

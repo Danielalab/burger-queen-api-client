@@ -1,7 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ItemOrder from './ItemOrder';
 
-const OrderContainer = () => (
+const ListProducts = ({ data }) => (
+  <ul className="w-100">
+    { data.map((element) => <ItemOrder key={element._id} dataProduct={element} />) }
+  </ul>
+);
+
+const OrderContainer = ({ arrProducts }) => (
   <div className="order-container w-50 px-2 py-1">
     <div className="order-table px-1 py-1">
       <form className="p-1 d-flex">
@@ -19,10 +26,9 @@ const OrderContainer = () => (
         <li className="flex-grow-1 text-center p-1">Precio</li>
       </ul>
       <div className="order-products-list container justify-content-center">
-        {/* <p>Aún no haz agregado productos en la orden</p> */}
-        <ul className="w-100">
-          <ItemOrder />
-        </ul>
+        { arrProducts === null
+          ? <p>Aún no haz agregado productos en la orden</p>
+          : <ListProducts data={arrProducts} />}
       </div>
       <footer>
         <p className="container total-text text-bold m-0">
@@ -38,5 +44,13 @@ const OrderContainer = () => (
     </div>
   </div>
 );
+
+OrderContainer.propTypes = {
+  arrProducts: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+ListProducts.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default OrderContainer;
