@@ -1,6 +1,7 @@
 import React from 'react';
 import IconoAumentarCantidad from '../images/mas.png';
 import IconoDisminuirCantidad from '../images/menos.png';
+import IconDelete from '../images/delete-icon.png';
 
 const ItemOrder = () => (
   <li className="d-flex item-order-container">
@@ -24,7 +25,7 @@ const ItemOrder = () => (
       <span>36</span>
       <button type="button" className="icon-button">
         <i>
-          <img src={IconoDisminuirCantidad} alt="icono-eliminar-producto" />
+          <img src={IconDelete} alt="icono-eliminar-producto" />
         </i>
       </button>
     </div>
