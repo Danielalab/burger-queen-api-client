@@ -15,3 +15,19 @@ export const addProduct = (orderProducts, newProduct) => {
     ...(orderProducts.map((product) => ({ ...product }))),
     { ...newProduct, qty: 1 }];
 };
+
+export const deleteProduct = (orderProducts, idProduct) => (
+  orderProducts.filter((product) => product._id !== idProduct)
+);
+
+export const subtractQuantityOfProduct = (orderProducts, idProduct) => (
+  orderProducts.reduce((accumulator, currentValue) => {
+    if (currentValue._id !== idProduct) {
+      return [...accumulator, currentValue];
+    }
+    if (currentValue.qty - 1 > 0) {
+      return [...accumulator, { ...currentValue, qty: currentValue.qty - 1 }];
+    }
+    return accumulator;
+  }, [])
+);

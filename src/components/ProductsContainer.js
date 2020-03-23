@@ -32,10 +32,10 @@ const ProductsContainer = ({ addingAProductToTheOrder }) => {
 
   return (
     <div className="w-50">
-      { <NavbarMenu
+      <NavbarMenu
         categoryActive={categoryActive}
         setCategoryActive={setCategoryActive}
-      />}
+      />
       <ul>
         { dataProducts
           ? filterProductsByCategory(dataProducts, categoryActive)
