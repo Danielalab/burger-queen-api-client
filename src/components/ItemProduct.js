@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import burgerSimpleImg from '../images/burger-simple.png';
 
 const ItemProduct = ({ productData, handlerClickItemProduct }) => {
   const { name, price } = productData;
   const clickProduct = (event) => {
     event.preventDefault();
-    handlerClickItemProduct(productData);
+    handlerClickItemProduct(productData, 'ADD');
   };
 
   return (

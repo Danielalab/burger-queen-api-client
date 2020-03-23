@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ItemOrder from './ItemOrder';
 
-const ListProducts = ({ data }) => (
+const ListProducts = ({ data, updatingOrder }) => (
   <ul className="w-100">
-    { data.map((element) => <ItemOrder key={element._id} dataProduct={element} />) }
+    { data.map((element) => (
+      <ItemOrder key={element._id} dataProduct={element} handleClickEvent={updatingOrder} />)) }
   </ul>
 );
 
-const OrderContainer = ({ arrProducts }) => (
+const OrderContainer = ({ arrProducts, updatingOrder }) => (
   <div className="order-container w-50 px-2 py-1">
     <div className="order-table px-1 py-1">
       <form className="p-1 d-flex">
@@ -28,7 +29,7 @@ const OrderContainer = ({ arrProducts }) => (
       <div className="order-products-list container justify-content-center">
         { arrProducts === null
           ? <p>Aún no haz agregado productos en la orden</p>
-          : <ListProducts data={arrProducts} />}
+          : <ListProducts data={arrProducts} updatingOrder={updatingOrder} />}
       </div>
       <footer>
         <p className="container total-text text-bold m-0">
@@ -47,10 +48,12 @@ const OrderContainer = ({ arrProducts }) => (
 
 OrderContainer.propTypes = {
   arrProducts: PropTypes.arrayOf(PropTypes.object).isRequired,
+  updatingOrder: PropTypes.func.isRequired,
 };
 
 ListProducts.propTypes = {
   data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  updatingOrder: PropTypes.func.isRequired,
 };
 
 export default OrderContainer;
