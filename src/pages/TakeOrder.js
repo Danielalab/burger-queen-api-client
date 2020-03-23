@@ -8,7 +8,7 @@ import ProductsContainer from '../components/ProductsContainer';
 import OrderContainer from '../components/OrderContainer';
 
 const TakeOrder = () => {
-  const [orderProducts, setOrderProducts] = useState(null);
+  const [orderProducts, setOrderProducts] = useState([]);
 
   const updatingOrder = (item, action) => {
     let updatedOrder;
