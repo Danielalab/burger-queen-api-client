@@ -18,14 +18,25 @@ const TakeOrder = () => {
       updatedOrder = subtractQuantityOfProduct(orderProducts, item._id);
     } if (action === 'DELETE') {
       updatedOrder = deleteProduct(orderProducts, item._id);
+    } if (action === 'SEND') {
+      updatedOrder = [];
     }
     setOrderProducts(updatedOrder);
+  };
+
+  const sendingOrder = (orderData) => {
+    console.log(orderData);
+    // updatingOrder(null, 'SEND');
   };
 
   return (
     <div className="d-flex main-container">
       <ProductsContainer addingAProductToTheOrder={updatingOrder} />
-      <OrderContainer arrProducts={orderProducts} updatingOrder={updatingOrder} />
+      <OrderContainer
+        arrProducts={orderProducts}
+        updatingOrder={updatingOrder}
+        sendOrder={sendingOrder}
+      />
     </div>
   );
 };
