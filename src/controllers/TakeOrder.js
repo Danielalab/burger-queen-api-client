@@ -1,3 +1,7 @@
+export const filterProductsByCategory = (products, category) => (
+  products.filter((product) => product.type === category)
+);
+
 export const findProductById = (orderProducts, newProduct) => (
   orderProducts.find((product) => product._id === newProduct._id)
 );

@@ -1,22 +1,11 @@
 import React, { useState, useEffect } from 'react';
+// components
 import PropTypes from 'prop-types';
-import Axios from 'axios';
 import NavbarMenu from './Navbar-menu';
 import ItemProduct from './ItemProduct';
-
-const requestDataProducts = (token) => Axios.get('http://localhost:3001/products', {
-  headers: {
-    Authorization: `Bearer ${token}`,
-  },
-})
-  .then((response) => response.data)
-  .catch((error) => {
-    console.log(error);
-  });
-
-const filterProductsByCategory = (products, category) => (
-  products.filter((product) => product.type === category)
-);
+// controllers
+import { getProductsData } from '../controllers/products-data';
+import { filterProductsByCategory } from '../controllers/TakeOrder';
 
 const ProductsContainer = ({ addingAProductToTheOrder }) => {
   const token = 'sjhkjfgsafkjs24kdhks';
@@ -24,11 +13,9 @@ const ProductsContainer = ({ addingAProductToTheOrder }) => {
   const [categoryActive, setCategoryActive] = useState('desayuno');
 
   useEffect(() => {
-    requestDataProducts(token)
-      .then((productsData) => {
-        setdataProducts(productsData);
-      });
-  }, []);
+    getProductsData(token)
+      .then((data) => setdataProducts(data));
+  }, [token]);
 
   return (
     <div className="w-50">
