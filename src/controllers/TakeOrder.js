@@ -2,15 +2,15 @@ export const filterProductsByCategory = (products, category) => (
   products.filter((product) => product.type === category)
 );
 
-export const findProductById = (orderProducts, newProduct) => (
-  orderProducts.find((product) => product._id === newProduct._id)
+export const findProductById = (orderProducts, _id) => (
+  orderProducts.find((product) => product._id === _id)
 );
 
 export const addProduct = (orderProducts, newProduct) => {
   if (!orderProducts) {
     return [{ ...newProduct, qty: 1 }];
   }
-  if (findProductById(orderProducts, newProduct)) {
+  if (findProductById(orderProducts, newProduct._id)) {
     return orderProducts.map((product) => ((product._id === newProduct._id)
       ? ({ ...product, qty: product.qty + 1 })
       : product));
