@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ItemOrder from './ItemOrder';
+import { getTotalOrder } from '../controllers/TakeOrder';
 
 const ListProducts = ({ data, updatingOrder }) => (
   <ul className="w-100">
@@ -34,7 +35,12 @@ const OrderContainer = ({ arrProducts, updatingOrder }) => (
       <footer>
         <p className="container total-text text-bold m-0">
           <span className="flex-grow-1 text-center p-1">Total</span>
-          <span className="flex-grow-1 text-center p-1">$ 48.00</span>
+          <span className="flex-grow-1 text-center p-1">
+            $
+            {' '}
+            { getTotalOrder(arrProducts) }
+            .00
+          </span>
         </p>
         <div className="d-flex justify-content-center">
           <button type="submit" className="button-success btn-large text-upper-case text-bold">
