@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // controllers
-import { addProduct, subtractQuantityOfProduct, deleteProduct } from '../controllersTakeOrder';
+import { addProduct, subtractQuantityOfProduct, deleteProduct } from '../controllers/TakeOrder';
 
 // components
 import ProductsContainer from '../components/ProductsContainer';
