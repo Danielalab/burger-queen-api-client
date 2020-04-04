@@ -35,3 +35,9 @@ export const subtractQuantityOfProduct = (orderProducts, idProduct) => (
     return accumulator;
   }, [])
 );
+
+export const getTotalOrder = (orderProducts) => (
+  orderProducts.reduce((accumulator, currentValue) => (
+    accumulator + (currentValue.qty * currentValue.price)
+  ), 0)
+);
