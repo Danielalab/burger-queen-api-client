@@ -1,9 +1,10 @@
 import Axios from 'axios';
+import { getToken } from './auth-data';
 
-export const getProductsData = (token) => (
+export const getProductsData = () => (
   Axios.get('http://localhost:3001/products', {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${getToken()}`,
     },
   })
     .then((response) => response.json())
