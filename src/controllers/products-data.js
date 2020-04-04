@@ -6,9 +6,19 @@ export const getProductsData = (token) => (
       Authorization: `Bearer ${token}`,
     },
   })
-    .then((response) => response.data)
-    .catch((error) => {
-      console.log(error);
+    .then((response) => response.json())
+    .then((data) => {
+      let result;
+      if (!data.statusCode) {
+        result = data;
+      }
+      if (data.statusCode === 401) {
+        result = {
+          code: 401,
+          message: 'Tu sesión ha expirado, vuelve a iniciar sesión para continuar',
+        };
+      }
+      return result;
     })
 );
 
