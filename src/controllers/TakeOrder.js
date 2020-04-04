@@ -7,7 +7,7 @@ export const findProductById = (orderProducts, _id) => (
 );
 
 export const addProduct = (orderProducts, newProduct) => {
-  if (!orderProducts) {
+  if (!orderProducts.length) {
     return [{ ...newProduct, qty: 1 }];
   }
   if (findProductById(orderProducts, newProduct._id)) {
