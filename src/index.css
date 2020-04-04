@@ -141,6 +141,11 @@ a {
   text-align: center;
 }
 
+.button-success:disabled {
+  background-color: #DFDFDF;
+  color: #747d8f;
+}
+
 .btn-large {
   width: 90%;
 }
