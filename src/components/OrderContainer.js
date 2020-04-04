@@ -15,6 +15,18 @@ const OrderContainer = ({ arrProducts, updatingOrder }) => {
   const handleChangeInput = (event) => {
     setNameClient(event.target.value);
   };
+  const handlerClickSendOrderButton = (event) => {
+    event.preventDefault();
+    const orderData = {
+      client: nameClient,
+      products: arrProducts.map((product) => ({
+        productId: product._id,
+        qty: product.qty,
+      })),
+    };
+    console.log(orderData);
+    // updatingOrder(null, 'SEND');
+  };
 
   return (
     <div className="order-container w-50 px-2 py-1">
@@ -54,6 +66,7 @@ const OrderContainer = ({ arrProducts, updatingOrder }) => {
               type="submit"
               className="button-success btn-large text-upper-case text-bold"
               disabled={arrProducts.length === 0 || nameClient === ''}
+              onClick={handlerClickSendOrderButton}
             >
               enviar orden
             </button>
