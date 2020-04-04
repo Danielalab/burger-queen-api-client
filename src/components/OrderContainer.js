@@ -10,7 +10,7 @@ const ListProducts = ({ data, updatingOrder }) => (
   </ul>
 );
 
-const OrderContainer = ({ arrProducts, updatingOrder }) => {
+const OrderContainer = ({ arrProducts, updatingOrder, sendOrder }) => {
   const [nameClient, setNameClient] = useState('');
   const handleChangeInput = (event) => {
     setNameClient(event.target.value);
@@ -24,8 +24,7 @@ const OrderContainer = ({ arrProducts, updatingOrder }) => {
         qty: product.qty,
       })),
     };
-    console.log(orderData);
-    // updatingOrder(null, 'SEND');
+    sendOrder(orderData);
   };
 
   return (
@@ -80,6 +79,7 @@ const OrderContainer = ({ arrProducts, updatingOrder }) => {
 OrderContainer.propTypes = {
   arrProducts: PropTypes.arrayOf(PropTypes.object).isRequired,
   updatingOrder: PropTypes.func.isRequired,
+  sendOrder: PropTypes.func.isRequired,
 };
 
 ListProducts.propTypes = {
