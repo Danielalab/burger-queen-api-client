@@ -13,7 +13,10 @@ const ListProducts = ({ data, updatingOrder }) => (
 const OrderContainer = ({ arrProducts, updatingOrder, sendOrder }) => {
   const [nameClient, setNameClient] = useState('');
   const handleChangeInput = (event) => {
-    setNameClient(event.target.value);
+    const valueInput = event.target.value;
+    if (valueInput.trim() !== '') {
+      setNameClient(event.target.value);
+    }
   };
   const handlerClickSendOrderButton = (event) => {
     event.preventDefault();
