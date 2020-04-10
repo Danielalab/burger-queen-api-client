@@ -6,6 +6,7 @@ import { addProduct, subtractQuantityOfProduct, deleteProduct } from '../control
 // components
 import ProductsContainer from '../components/ProductsContainer';
 import OrderContainer from '../components/OrderContainer';
+import Header from '../components/Header';
 
 const TakeOrder = () => {
   const [orderProducts, setOrderProducts] = useState([]);
@@ -30,14 +31,17 @@ const TakeOrder = () => {
   };
 
   return (
-    <div className="d-flex main-container">
-      <ProductsContainer addingAProductToTheOrder={updatingOrder} />
-      <OrderContainer
-        arrProducts={orderProducts}
-        updatingOrder={updatingOrder}
-        sendOrder={sendingOrder}
-      />
-    </div>
+    <>
+      <Header />
+      <div className="d-flex main-container">
+        <ProductsContainer addingAProductToTheOrder={updatingOrder} />
+        <OrderContainer
+          arrProducts={orderProducts}
+          updatingOrder={updatingOrder}
+          sendOrder={sendingOrder}
+        />
+      </div>
+    </>
   );
 };
 
