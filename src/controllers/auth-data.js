@@ -9,16 +9,16 @@ export const getAuthToken = (email, password) => (
     .then((data) => {
       let response;
       if (!data.statusCode) {
-        response = data.token;
+        response = { token: data.token };
       }
-      response = {
-        code: data.statusCode,
-      };
       if (data.statusCode === 400) {
-        response.message = 'El email y password ingresados son incorrectos, vuelva a intentarlo';
+        response.errMessage = 'El email y password ingresados son incorrectos, vuelva a intentarlo';
       }
       if (data.statusCode === 404) {
-        response.message = 'El usuario ingresado no existe';
+        response.errMessage = 'El email ingresado no existe';
+      }
+      if (data.statusCode === 401) {
+        response.errMessage = 'El password ingresado es incorrecto. Vuelve a intentarlo';
       }
       return response;
     })
