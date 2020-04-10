@@ -70,6 +70,10 @@ a {
   align-items: flex-end;
 }
 
+.flex-direction-column {
+  flex-direction: column;
+}
+
 /*  UTILS */
 
 .m-0 {
@@ -80,12 +84,20 @@ a {
   margin-left: 1em;
 }
 
+.mx-2 {
+  margin: 1.5em 0;
+}
+
 .p-0 {
   padding: 0;
 }
 
 .p-1 {
   padding: 1em;
+}
+
+.p-2 {
+  padding: 2em;
 }
 
 .px-1 {
@@ -148,7 +160,83 @@ a {
 
 .btn-large {
   width: 90%;
+  font-size: 28px;
 }
+
+/* FORMS */
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: #364f6bcc;
+  font-size: 28px;
+  margin: 4rem 0 2rem 0;
+  width: 90%;
+}
+
+.form-control>input {
+  font-size: 28px;
+  border: none;
+  border-bottom: 1px solid #364f6bcc;
+  transition: .2s border-bottom;
+  width: 100%;
+}
+
+.form-control>label {
+  margin-bottom: 1.5rem;
+  position: absolute;
+  transition: .2s color, .2s bottom;
+}
+
+
+.form-control>input:focus, .form-control>input:active{
+  outline: none;
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.form-control input:focus + label,
+.form-control input:active + label,
+.form-control input:valid + label {
+  color: var(--primary-color);
+  bottom: 95%;
+}
+
+/* LOGIN */
+
+.login-container {
+  height: 100vh;
+}
+
+.login-container h2 {
+  font-size: 36px;
+  width: 90%;
+}
+
+.login-container .font-title {
+  font-size: 48px;
+}
+
+.login-container div:nth-child(1) {
+  background-color: var(--primary-color);
+  color: var(--secondary-contrast-text);
+}
+
+.login-container form {
+  color: var(--primary-color);
+  font-size: 28px;
+}
+
+.banner-container img:nth-child(1) {
+  width: 100px;
+  height: 100px;
+}
+
+.banner-container img:nth-child(2) {
+  width: 240px;
+  height: 240px;
+}
+
 
 /* HEADER */
 
