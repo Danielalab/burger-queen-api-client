@@ -1,20 +1,30 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { getAuthToken, saveToken } from '../../controllers/auth-data';
 
-const LoginForm = ({ handleLogin }) => {
+const LoginForm = ({ handleSuccessLogin }) => {
+  const [err, setErr] = useState(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleLogin = () => {
+    getAuthToken(email, password)
+      .then((response) => {
+        saveToken(response.token);
+      })
+      .catch((error) => {
+        setErr(error);
+      });
+  };
 
   const handleChangeInput = (event) => {
     const valueInput = event.target.value;
     const typeInput = event.target.type;
-    if (valueInput.trim() !== '') {
-      if (typeInput === 'email') {
-        setEmail(valueInput);
-      }
-      if (typeInput === 'password') {
-        setPassword(valueInput);
-      }
+    if (typeInput === 'email') {
+      setEmail(valueInput);
+    }
+    if (typeInput === 'password') {
+      setPassword(valueInput);
     }
   };
 
@@ -55,13 +65,14 @@ const LoginForm = ({ handleLogin }) => {
         <button type="submit" className="button-success btn-large text-upper-case text-bold mx-2">
           iniciar sesión
         </button>
+        { err && <p>{err}</p>}
       </form>
     </div>
   );
 };
 
 LoginForm.propTypes = {
-  handleLogin: PropTypes.func.isRequired,
+  handleSuccessLogin: PropTypes.func.isRequired,
 };
 
 export default LoginForm;

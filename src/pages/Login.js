@@ -1,20 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
 import LoginForm from '../components/login/LoginForm';
 import logoBurgerQueenCrown from '../images/logo-corona.png';
 import logoBurger from '../images/burger-logo.png';
-import { getAuthToken, saveToken } from '../controllers/auth-data';
 
 const Login = () => {
-  const [err, setErr] = useState(null);
-  const handleLogin = ({ email, password }) => {
-    getAuthToken(email, password)
-      .then((response) => {
-        saveToken(response.token);
-      })
-      .catch((error) => {
-        setErr(error);
-      });
+  const history = useHistory();
+  const handleSuccessLogin = () => {
+    history.push('/tomar-orden');
   };
+
   return (
     <section className="container login-container">
       <div className="w-50 d-flex justify-content-center flex-direction-column">
@@ -26,7 +21,7 @@ const Login = () => {
           burger queen
         </h2>
       </div>
-      <LoginForm handleLogin={handleLogin} errMessage={err} />
+      <LoginForm handleSuccessLogin={handleSuccessLogin} />
     </section>
   );
 };
