@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import LoginForm from '../components/login/LoginForm';
 import logoBurgerQueenCrown from '../images/logo-corona.png';
 import logoBurger from '../images/burger-logo.png';
-import { getAuthToken } from '../controllers/auth-data';
+import { getAuthToken, saveToken } from '../controllers/auth-data';
 
 const Login = () => {
   const [err, setErr] = useState(null);
   const handleLogin = ({ email, password }) => {
     getAuthToken(email, password)
       .then((response) => {
-        console.log(response);
+        saveToken(response.token);
       })
       .catch((error) => {
         setErr(error);
