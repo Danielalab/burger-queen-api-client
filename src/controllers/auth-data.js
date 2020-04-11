@@ -1,26 +1,31 @@
 import Axios from 'axios';
 
+// Axios.defaults.baseURL = 'http://157.245.224.132/auth';
+const url = 'http://157.245.224.132';
+
 export const getAuthToken = (email, password) => (
-  Axios.post('http://localhost:3001/auth', {
+  Axios.post(`${url}/auth`, JSON.stringify({
     email,
     password,
+  }), {
+    headers: {
+      'Content-Type': 'application/json',
+    },
   })
-    .then((response) => response.json())
-    .then((data) => {
-      let response;
-      if (!data.statusCode) {
-        response = { token: data.token };
-      }
+    .then((response) => response.data)
+    .catch((err) => {
+      const { data } = err.response;
+      let errMessage;
       if (data.statusCode === 400) {
-        response.errMessage = 'El email y password ingresados son incorrectos, vuelva a intentarlo';
+        errMessage = 'El email y password ingresados son incorrectos, vuelva a intentarlo';
       }
       if (data.statusCode === 404) {
-        response.errMessage = 'El email ingresado no existe';
+        errMessage = 'El email ingresado no existe';
       }
       if (data.statusCode === 401) {
-        response.errMessage = 'El password ingresado es incorrecto. Vuelve a intentarlo';
+        errMessage = 'El password ingresado es incorrecto. Vuelve a intentarlo';
       }
-      return response;
+      return Promise.reject(errMessage);
     })
 );
 
