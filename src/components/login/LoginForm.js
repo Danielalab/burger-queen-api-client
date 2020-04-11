@@ -11,6 +11,7 @@ const LoginForm = ({ handleSuccessLogin }) => {
     getAuthToken(email, password)
       .then((response) => {
         saveToken(response.token);
+        handleSuccessLogin();
       })
       .catch((error) => {
         setErr(error);
