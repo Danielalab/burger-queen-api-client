@@ -66,7 +66,7 @@ const LoginForm = ({ handleSuccessLogin }) => {
         <button type="submit" className="button-success btn-large text-upper-case text-bold mx-2">
           iniciar sesión
         </button>
-        { err && <p>{err}</p>}
+        { err && <p className="text-center m-0">{err}</p>}
       </form>
     </div>
   );

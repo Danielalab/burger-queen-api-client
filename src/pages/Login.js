@@ -12,7 +12,7 @@ const Login = () => {
 
   return (
     <section className="container login-container">
-      <div className="w-50 d-flex justify-content-center flex-direction-column">
+      <div className="w-50 d-flex justify-content-center flex-direction-column align-items-center">
         <figure className="banner-container d-flex align-items-center flex-direction-column">
           <img src={logoBurgerQueenCrown} alt="logo-de-corona-burger-queen" />
           <img src={logoBurger} alt="logo-de-hamburguesa" />
