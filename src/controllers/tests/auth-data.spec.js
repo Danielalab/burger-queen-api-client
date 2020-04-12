@@ -1,8 +1,12 @@
 import Axios from 'axios';
 
-import { getAuthToken } from '../auth-data';
-
+import { getAuthToken, saveToken, getToken } from '../auth-data';
+import mockSessionStorage from './__mocks__/mockSessionStorage';
+// mocking axios
 jest.mock('axios');
+
+// mocking sessionStorage
+global.sessionStorage = mockSessionStorage;
 
 describe('getAuthToken', () => {
   const email = 'test@test.la';
@@ -69,5 +73,22 @@ describe('getAuthToken', () => {
       expect(err).toBe('El password ingresado es incorrecto. Vuelve a intentarlo');
       done();
     }
+  });
+});
+
+describe('saveToken', () => {
+  it('Deberia almacenar el token en sessionStorage', () => {
+    const fakeToken = 'faketoken';
+    // guardando token en sessionStorage
+    saveToken(fakeToken);
+    expect(getToken()).toBe(fakeToken);
+  });
+});
+
+describe('getToken', () => {
+  it('Deberia devolver el token almacenado en sessionStorage', () => {
+    const fakeToken = 'faketoken';
+    sessionStorage.setItem('token', fakeToken);
+    expect(getToken()).toBe(fakeToken);
   });
 });
