@@ -51,6 +51,7 @@ const LoginForm = ({ handleSuccessLogin }) => {
             id="email"
             value={email}
             onChange={handleChangeInput}
+            data-testid="email"
           />
           <label htmlFor="email">Email</label>
         </div>
@@ -60,13 +61,14 @@ const LoginForm = ({ handleSuccessLogin }) => {
             id="password"
             value={password}
             onChange={handleChangeInput}
+            data-testid="password"
           />
           <label htmlFor="password">Password</label>
         </div>
-        <button type="submit" className="button-success btn-large text-upper-case text-bold mx-2">
+        <button type="submit" className="button-success btn-large text-upper-case text-bold mx-2" data-testid="button-sign-in">
           iniciar sesión
         </button>
-        { err && <p className="text-center m-0">{err}</p>}
+        { err && <p className="text-center m-0" data-testid="sign-in-err-message">{err}</p>}
       </form>
     </div>
   );
