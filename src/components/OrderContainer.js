@@ -69,6 +69,7 @@ const OrderContainer = ({ arrProducts, updatingOrder, sendOrder }) => {
               className="button-success btn-large text-upper-case text-bold"
               disabled={arrProducts.length === 0 || nameClient === ''}
               onClick={handlerClickSendOrderButton}
+              data-testid="button-send-order"
             >
               enviar orden
             </button>

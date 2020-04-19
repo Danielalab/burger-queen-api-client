@@ -40,10 +40,10 @@ const LoginForm = ({ handleSuccessLogin }) => {
         className="p-2 d-flex flex-direction-column align-items-center"
         onSubmit={handleSubmitForm}
       >
-        <h2 className="mx-2">
+        <h2 className="mx-2" data-testid="greeting-login-form">
           Bienvenidxs a
           <br />
-          <span className="font-title text-upper-case">burger queen</span>
+          <span className="font-title text-upper-case"> burger queen</span>
         </h2>
         <div className="form-control">
           <input
