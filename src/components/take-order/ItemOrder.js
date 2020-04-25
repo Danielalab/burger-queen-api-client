@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import IconoAumentarCantidad from '../images/mas.png';
-import IconoDisminuirCantidad from '../images/menos.png';
-import IconDelete from '../images/delete-icon.png';
+import IconoAumentarCantidad from '../../images/mas.png';
+import IconoDisminuirCantidad from '../../images/menos.png';
+import IconDelete from '../../images/delete-icon.png';
 
 const ItemOrder = ({ dataProduct, handleClickEvent }) => {
   const { name, price, qty } = dataProduct;

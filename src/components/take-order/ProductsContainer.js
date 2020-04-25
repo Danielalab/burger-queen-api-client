@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import NavbarMenu from './Navbar-menu';
 import ItemProduct from './ItemProduct';
 // controllers
-import { getProductsData } from '../controllers/products-data';
-import { filterProductsByCategory } from '../controllers/TakeOrder';
+import { getProductsData } from '../../controllers/products-data';
+import { filterProductsByCategory } from '../../controllers/TakeOrder';
 
 const ProductsContainer = ({ addingAProductToTheOrder }) => {
   const token = 'sjhkjfgsafkjs24kdhks';

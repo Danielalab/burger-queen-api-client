@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import { addProduct, subtractQuantityOfProduct, deleteProduct } from '../controllers/TakeOrder';
 
 // components
-import ProductsContainer from '../components/ProductsContainer';
-import OrderContainer from '../components/OrderContainer';
-import Header from '../components/Header';
+import ProductsContainer from '../components/take-order/ProductsContainer';
+import OrderContainer from '../components/take-order/OrderContainer';
+import Header from '../components/take-order/Header';
 
 const TakeOrder = () => {
   const [orderProducts, setOrderProducts] = useState([]);

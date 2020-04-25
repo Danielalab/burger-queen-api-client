@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ItemOrder from './ItemOrder';
-import { getTotalOrder } from '../controllers/TakeOrder';
+import { getTotalOrder } from '../../controllers/TakeOrder';
 
 const ListProducts = ({ data, updatingOrder }) => (
   <ul className="w-100">
