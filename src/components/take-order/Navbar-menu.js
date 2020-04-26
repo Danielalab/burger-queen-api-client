@@ -9,8 +9,8 @@ const NavbarMenu = ({ categoryActive, setCategoryActive }) => {
   };
 
   return (
-    <nav>
-      <ul className="p-0 text-upper-case h-100 container">
+    <nav data-testid="navbar-element">
+      <ul className="p-0 text-upper-case h-100 container" data-testid="categories-list">
         { categories.map((category) => (
           <li
             role="menuitem"
