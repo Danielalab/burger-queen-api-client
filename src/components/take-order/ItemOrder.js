@@ -14,13 +14,23 @@ const ItemOrder = ({ dataProduct, handleClickEvent }) => {
   return (
     <li className="d-flex item-order-container">
       <div className="flex-grow-1 d-flex justify-content-space-evenly align-items-center">
-        <button type="button" className="icon-button" onClick={() => handleOnClickOnButton('ADD')}>
+        <button
+          type="button"
+          className="icon-button"
+          onClick={() => handleOnClickOnButton('ADD')}
+          data-testid="btn-add-qty"
+        >
           <i>
             <img src={IconoAumentarCantidad} alt="icono-aumentar-cantidad" />
           </i>
         </button>
         <span>{ qty }</span>
-        <button type="button" className="icon-button" onClick={() => handleOnClickOnButton('MINUS')}>
+        <button
+          type="button"
+          className="icon-button"
+          onClick={() => handleOnClickOnButton('MINUS')}
+          data-testid="btn-minus-qty"
+        >
           <i>
             <img src={IconoDisminuirCantidad} alt="icono-disminuir-cantidad" />
           </i>
@@ -31,7 +41,12 @@ const ItemOrder = ({ dataProduct, handleClickEvent }) => {
       </div>
       <div className="flex-grow-1 d-flex justify-content-space-evenly align-items-center">
         <span>{ qty * price }</span>
-        <button type="button" className="icon-button" onClick={() => handleOnClickOnButton('DELETE')}>
+        <button
+          type="button"
+          className="icon-button"
+          onClick={() => handleOnClickOnButton('DELETE')}
+          data-testid="btn-delete"
+        >
           <i>
             <img src={IconDelete} alt="icono-eliminar-producto" />
           </i>
