@@ -7,6 +7,20 @@ import data from './data';
 jest.mock('../../../controllers/TakeOrder');
 
 describe('OrderContainer', () => {
+  const nameClientFake = 'name fake';
+  const changeNameClientInputValue = (clientNameInputElement) => {
+    act(() => {
+      fireEvent.change(
+        clientNameInputElement,
+        {
+          target: {
+            value: nameClientFake,
+          },
+        },
+      );
+    });
+  };
+
   it('Debería renderizar el component con la lista de productos', () => {
     const fnUpdatingOrder = jest.fn();
     const fnSendOrder = jest.fn();
@@ -67,17 +81,9 @@ describe('OrderContainer', () => {
       />,
     );
     const clientNameInputElement = queryByTestId('client-name-element');
-    const nameClientFake = 'name fake';
-    act(() => {
-      fireEvent.change(
-        clientNameInputElement,
-        {
-          target: {
-            value: nameClientFake,
-          },
-        },
-      );
-    });
+
+    changeNameClientInputValue(clientNameInputElement);
+
     expect(clientNameInputElement.value).toBe(nameClientFake);
   });
 
@@ -101,17 +107,8 @@ describe('OrderContainer', () => {
         sendOrder={fnSendOrder}
       />,
     );
-    const nameClientFake = 'name fake';
-    act(() => {
-      fireEvent.change(
-        clientNameInputElement,
-        {
-          target: {
-            value: nameClientFake,
-          },
-        },
-      );
-    });
+
+    changeNameClientInputValue(clientNameInputElement);
     const btnSendOrderEnabled = queryByTestId('button-send-order');
     expect(btnSendOrderEnabled.disabled).toBe(false);
   });
@@ -128,18 +125,8 @@ describe('OrderContainer', () => {
     );
     const btnSendOrder = queryByTestId('button-send-order');
     const clientNameInputElement = queryByTestId('client-name-element');
-    const nameClientFake = 'name fake';
 
-    act(() => {
-      fireEvent.change(
-        clientNameInputElement,
-        {
-          target: {
-            value: nameClientFake,
-          },
-        },
-      );
-    });
+    changeNameClientInputValue(clientNameInputElement);
 
     act(() => {
       fireEvent.click(btnSendOrder);
