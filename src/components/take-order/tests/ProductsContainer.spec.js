@@ -3,27 +3,10 @@ import { render, waitFor } from '@testing-library/react';
 import { getProductsData as mockGetProductsData } from '../../../controllers/products-data';
 import { filterProductsByCategory as mockFilterProductsByCategory } from '../../../controllers/TakeOrder';
 import ProductsContainer from '../ProductsContainer';
+import data from './data';
 
 jest.mock('../../../controllers/products-data');
 jest.mock('../../../controllers/TakeOrder');
-
-const data = [
-  {
-    name: 'hamburguesa fake 1',
-    price: 5,
-    type: 'menu',
-  },
-  {
-    name: 'cafe con leche fake 1',
-    price: 5,
-    type: 'desayuno',
-  },
-  {
-    name: 'hamburguesa fake 2',
-    price: 5,
-    type: 'menu',
-  },
-];
 
 const dataFiltered = [
   {
