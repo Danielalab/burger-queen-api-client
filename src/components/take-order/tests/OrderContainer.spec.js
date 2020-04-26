@@ -1,6 +1,9 @@
 import React from 'react';
 import { render, act, fireEvent } from '@testing-library/react';
+import { getTotalOrder as mockGetTotalOrder } from '../../../controllers/TakeOrder';
 import OrderContainer from '../OrderContainer';
+
+jest.mock('../../../controllers/TakeOrder');
 
 const data = [
   {
@@ -57,6 +60,23 @@ describe('OrderContainer', () => {
     const notProductsMessageElement = queryByText('Aún no haz agregado productos a la orden');
     expect(listProductsElement).toBeFalsy();
     expect(notProductsMessageElement).toBeTruthy();
+  });
+
+  it('Debería renderizar el component con el total de la orden', () => {
+    mockGetTotalOrder.mockReturnValue(25);
+    const fnUpdatingOrder = jest.fn();
+    const fnSendOrder = jest.fn();
+    const { queryByText } = render(
+      <OrderContainer
+        arrProducts={data}
+        updatingOrder={fnUpdatingOrder}
+        sendOrder={fnSendOrder}
+      />,
+    );
+    const totalOrderElement = queryByText('$ 25.00');
+    expect(totalOrderElement).toBeTruthy();
+    expect(mockGetTotalOrder).toHaveBeenCalled();
+    expect(mockGetTotalOrder).toHaveBeenCalledWith(data);
   });
 
   it('Debería cambiar el valor del input con el nombre del cliente', () => {
