@@ -4,7 +4,7 @@ import ItemOrder from './ItemOrder';
 import { getTotalOrder } from '../../controllers/TakeOrder';
 
 const ListProducts = ({ data, updatingOrder }) => (
-  <ul className="w-100">
+  <ul className="w-100" data-testid="list-products-element">
     { data.map((element) => (
       <ItemOrder key={element._id} dataProduct={element} handleClickEvent={updatingOrder} />)) }
   </ul>
@@ -41,6 +41,7 @@ const OrderContainer = ({ arrProducts, updatingOrder, sendOrder }) => {
             name="client-name"
             className="ml-1 flex-grow-2"
             onChange={handleChangeInput}
+            data-testid="client-name-element"
           />
         </form>
         <ul className="order-table-head container primary-text">
