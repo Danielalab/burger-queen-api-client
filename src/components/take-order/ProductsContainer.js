@@ -23,7 +23,7 @@ const ProductsContainer = ({ addingAProductToTheOrder }) => {
         categoryActive={categoryActive}
         setCategoryActive={setCategoryActive}
       />
-      <ul>
+      <ul data-testid="list-element">
         { dataProducts
           ? filterProductsByCategory(dataProducts, categoryActive)
             .map((product) => (
