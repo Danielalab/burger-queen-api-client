@@ -18,7 +18,7 @@ export const getProductsData = () => (
       if (data.statusCode === 401) {
         result = {
           ...result,
-          message: 'Tu sesión ha expirado, vuelve a iniciar sesión para continuar',
+          message: 'Tu sesión ha expirado, vuelve a iniciar sesión para continuar.',
         };
       } else {
         result = {

@@ -45,6 +45,20 @@ describe('getProductsData', () => {
     };
     Axios.get.mockImplementationOnce(() => Promise.reject(errResponse));
     const result = await getProductsData();
-    expect(result).toEqual(fakeMessage);
+    expect(result.message).toBe(fakeMessage);
+  });
+
+  it('Debería retornar un mensaje de err si el request status es diferente a 401', async () => {
+    const fakeMessage = 'Al parecer hubo un error interno, vuelve a intentarlo más tarde';
+    const errResponse = {
+      response: {
+        data: {
+          statusCode: 500,
+        },
+      },
+    };
+    Axios.get.mockImplementationOnce(() => Promise.reject(errResponse));
+    const result = await getProductsData();
+    expect(result.message).toBe(fakeMessage);
   });
 });
