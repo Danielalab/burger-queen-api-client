@@ -4,7 +4,7 @@ import { getToken } from './auth-data';
 const url = 'http://157.245.224.132';
 
 export const getProductsData = () => (
-  Axios.get(`${url}/products`, {
+  Axios.get(`${url}/products?limit=20`, {
     headers: {
       Authorization: `Bearer ${getToken()}`,
     },
