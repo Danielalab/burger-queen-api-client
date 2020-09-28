@@ -12,20 +12,20 @@ const ItemProduct = ({ productData, handlerClickItemProduct }) => {
   return (
     <li
       role="menuitem"
-      className="item-product container align-items-center"
+      className="item-product d-flex"
       onClick={clickProduct}
       onKeyDown={clickProduct}
       data-testid="product-element"
     >
-      <figure className="container-product-img h-100 m-0 flex-grow-2 d-flex align-items-center justify-content-center">
+      <figure className="container-product-img h-100 m-0 flex-grow-1 d-flex justify-content-space-evenly align-items-center">
         <img
           src={burgerSimpleImg}
           alt={name}
           className="product-img"
         />
       </figure>
-      <p className="flex-grow-1">{ name }</p>
-      <p className="flex-grow-2 text-center">
+      <p className="flex-grow-1 d-flex justify-content-space-evenly align-items-center">{ name }</p>
+      <p className="flex-grow-1 d-flex justify-content-space-evenly align-items-center">
         $
         { price }
         .00

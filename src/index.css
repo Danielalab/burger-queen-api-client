@@ -352,9 +352,16 @@ nav {
 }
 
 .order-products-list {
+  box-sizing: border-box;
   border-top: 2px solid #364f6b73;
   border-bottom: 2px solid #364f6b73;
   height: 65%;
+  padding: 0.5rem 0;
+}
+
+.order-products-list > ul {
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .order-table footer button {

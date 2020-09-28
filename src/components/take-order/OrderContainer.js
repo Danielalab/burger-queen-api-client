@@ -4,7 +4,7 @@ import ItemOrder from './ItemOrder';
 import { getTotalOrder } from '../../controllers/TakeOrder';
 
 const ListProducts = ({ data, updatingOrder }) => (
-  <ul className="w-100" data-testid="list-products-element">
+  <ul className="w-100 h-100" data-testid="list-products-element">
     { data.map((element) => (
       <ItemOrder key={element._id} dataProduct={element} handleClickEvent={updatingOrder} />)) }
   </ul>
