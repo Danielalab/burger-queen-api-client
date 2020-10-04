@@ -1,5 +1,5 @@
 import React from 'react';
-import logoBurgerQueen from '../../images/logo-corona.png';
+import logoBurgerQueen from '../images/logo-corona.png';
 
 const Header = () => (
   <header className="container">

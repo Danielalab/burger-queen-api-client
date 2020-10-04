@@ -7,8 +7,8 @@ import sendOrder from '../controllers/orders-data';
 // components
 import ProductsContainer from '../components/take-order/ProductsContainer';
 import OrderContainer from '../components/take-order/OrderContainer';
-import Header from '../components/take-order/Header';
-import { getItemSessionStorage, getToken } from '../controllers/auth-data';
+import Header from '../components/Header';
+import { getItemSessionStorage } from '../controllers/auth-data';
 import getUserDataByUid from '../controllers/users-data';
 
 const TakeOrder = () => {
