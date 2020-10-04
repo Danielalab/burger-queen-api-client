@@ -5,6 +5,7 @@ import {
 import {
   getAuthToken as mockGetAuthToken,
   saveToken as mockSaveToken,
+  saveItemSessionStorage as mockSaveItemSessionStorage,
 } from '../../../controllers/auth-data';
 import LoginForm from '../LoginForm';
 
@@ -82,6 +83,8 @@ describe('LoginForm', () => {
     });
     expect(mockSaveToken).toHaveBeenCalled();
     expect(mockSaveToken).toHaveBeenCalledWith(fakeToken);
+    expect(mockSaveItemSessionStorage).toHaveBeenCalled();
+    expect(mockSaveItemSessionStorage).toHaveBeenCalledWith('email', fakeEmail);
     expect(fnSuccessLogin).toHaveBeenCalled();
   });
 
