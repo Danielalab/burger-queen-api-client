@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 
 // controllers
 import { addProduct, subtractQuantityOfProduct, deleteProduct } from '../controllers/TakeOrder';
+import sendOrder from '../controllers/orders-data';
 
 // components
 import ProductsContainer from '../components/take-order/ProductsContainer';
 import OrderContainer from '../components/take-order/OrderContainer';
 import Header from '../components/take-order/Header';
+import { getItemSessionStorage, getToken } from '../controllers/auth-data';
+import getUserDataByUid from '../controllers/users-data';
 
 const TakeOrder = () => {
   const [orderProducts, setOrderProducts] = useState([]);
+
 
   const updatingOrder = (item, action) => {
     let updatedOrder;
@@ -19,15 +23,19 @@ const TakeOrder = () => {
       updatedOrder = subtractQuantityOfProduct(orderProducts, item._id);
     } if (action === 'DELETE') {
       updatedOrder = deleteProduct(orderProducts, item._id);
-    } if (action === 'SEND') {
+    } if (action === 'RESET') {
       updatedOrder = [];
     }
     setOrderProducts(updatedOrder);
   };
 
   const sendingOrder = (orderData) => {
-    console.log(orderData);
-    // updatingOrder(null, 'SEND');
+    const userEmail = getItemSessionStorage('email');
+    getUserDataByUid(userEmail)
+      .then((dataUser) => sendOrder({ userId: dataUser._id, ...orderData }))
+      .then(() => {
+        updatingOrder(null, 'RESET');
+      });
   };
 
   return (
