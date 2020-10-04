@@ -36,3 +36,11 @@ export const saveToken = (token) => (
 export const getToken = () => (
   sessionStorage.getItem('token')
 );
+
+export const saveItemSessionStorage = (key, value) => (
+  sessionStorage.setItem(key, value)
+);
+
+export const getItemSessionStorage = (key) => (
+  sessionStorage.getItem(key)
+);
