@@ -1,6 +1,8 @@
 import Axios from 'axios';
 
-import { getAuthToken, saveToken, getToken } from '../auth-data';
+import {
+  getAuthToken, saveToken, getToken, saveItemSessionStorage, getItemSessionStorage,
+} from '../auth-data';
 import mockSessionStorage from './__mocks__/mockSessionStorage';
 // mocking axios
 jest.mock('axios');
@@ -90,5 +92,22 @@ describe('getToken', () => {
     const fakeToken = 'faketoken';
     sessionStorage.setItem('token', fakeToken);
     expect(getToken()).toBe(fakeToken);
+  });
+});
+
+describe('saveItemSessionStorage', () => {
+  it('Deberia almacenar el token en sessionStorage', () => {
+    const fakeToken = 'faketoken';
+    // guardando token en sessionStorage
+    saveItemSessionStorage('token', fakeToken);
+    expect(getToken()).toBe(fakeToken);
+  });
+});
+
+describe('getItemSessionStorage', () => {
+  it('Deberia devolver el token almacenado en sessionStorage', () => {
+    const fakeToken = 'faketoken';
+    sessionStorage.setItem('token', fakeToken);
+    expect(getItemSessionStorage('token')).toBe(fakeToken);
   });
 });
