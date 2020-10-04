@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { getAuthToken, saveToken } from '../../controllers/auth-data';
+import { getAuthToken, saveItemSessionStorage, saveToken } from '../../controllers/auth-data';
 
 const LoginForm = ({ handleSuccessLogin }) => {
   const [err, setErr] = useState(null);
@@ -11,6 +11,7 @@ const LoginForm = ({ handleSuccessLogin }) => {
     getAuthToken(email, password)
       .then((response) => {
         saveToken(response.token);
+        saveItemSessionStorage('email', email);
         handleSuccessLogin();
       })
       .catch((error) => {
