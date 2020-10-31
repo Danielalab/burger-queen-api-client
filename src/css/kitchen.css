@@ -1,0 +1,36 @@
+table {
+  border-collapse: collapse;
+}
+
+thead,
+tbody {
+  display: block;  
+}
+
+tr {
+  display: flex;
+  border-radius: 10px;
+  margin: 0.5rem 0;
+} 
+
+td, th {
+  align-items: center;
+  justify-content: center;
+  display: flex; /* Needed for IE */
+  width: 20%;
+}
+
+td {
+  margin: 0 0.5rem ;
+}
+
+thead tr {
+  background-color: var(--secondary-contrast-text);
+  color: var(--primary-color);
+  /* font-size: 18px; */
+}
+
+tbody tr {
+  text-align: center;
+  border: 1px solid #364f6b66;
+}
